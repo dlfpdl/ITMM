@@ -1,0 +1,37 @@
+{
+	"name": "mern",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"dev": "concurrently \"npm run server\" \"npm run client\" ",
+		"start": "node server.js",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix client && npm run build --prefix client",
+		"client": "cd client && npm run start",
+		"server": "nodemon server.js",
+		"kill": "concurrently \"kill-port 3000\" \" kill-port 5000\" "
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"-": "^0.0.1",
+		"bcrypt": "^5.0.1",
+		"concurrently": "^6.0.0",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^8.5.1",
+		"linkifyjs": "^3.0.0-beta.3",
+		"mongoose": "^5.12.0",
+		"morgan": "~1.9.0",
+		"node-sass": "^6.0.1",
+		"nodemon": "^2.0.14",
+		"saas": "^1.0.0",
+		"socket.io": "^4.0.1"
+	},
+	"devDependencies": {
+		"kill-port": "^1.6.1"
+	}
+}
