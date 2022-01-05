@@ -1,6 +1,7 @@
 const Posts = require("../models/postModel");
 const Comments = require("../models/commentModel");
 const Users = require("../models/userModel");
+const Notifies = require("../models/notifyModel")
 
 class APIfeatures {
   constructor(query, queryString) {
@@ -475,11 +476,12 @@ const postCtrl = {
   getUserPosts: async (req, res) => {
     try {
       const features = new APIfeatures(
-        Posts.find({ user: req.params.id }),
+        Posts.find({
+          user: req.params.id,
+        }),
         req.query
       ).paginating();
       const posts = await features.query.sort("-createdAt");
-
       res.json({
         posts,
         result: posts.length,

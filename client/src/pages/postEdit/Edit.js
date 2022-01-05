@@ -187,7 +187,15 @@ const Edit = ({history, location, match}) => {
             titlem,
             auth,
             status : patientUserData
-        })).then(()=> window.location.href ='/');
+        })).then(()=> {
+            dispatch(
+                createPost({
+                    patientUserData,
+                    auth,
+                    socket
+                })
+            );
+        });
 
         if (tracks) {
             tracks.stop();

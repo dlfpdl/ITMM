@@ -16,12 +16,19 @@ const ReTreatment = () => {
     useEffect(() => {
         getDataAPI(`user_posts/${id}?limit=${9}`, auth.token)
             .then(doc => {
-                setData(doc.data.posts);
+                const docData = doc.data.posts
+                const res = docData.filter((elem1, idx1)=>{
+                    return docData.findIndex((elem2, idx2)=>{
+                        return elem1.content === elem2.content
+                    }) === idx1
+                })
+                setData(res)
             })
     }, []);
 
     return <React.Fragment>
-        <div> 재진 환자 리스트 </div>
+        <hr/>
+        <div className="retreatmentTitle"> 재진 환자 리스트 </div>
         {
             isData.map((item, key) => {
                 return <ReTreatmentCard key={key} item={item} />
@@ -32,14 +39,15 @@ const ReTreatment = () => {
 
 const ReTreatmentCard = ({item}) => {
     useEffect(()=>{
-        console.log(item)
+        console.log()
     },[])
     return <Link to={{
         pathname : `/postEdit/${item._id}`,
         state :{
             item
         }
-    }}>
+    }} className={"retreatment"}>
+        <img src={item.images[0] !== undefined && item.images[0].url !== undefined && item.images[0].url} />
         <p>{item.content}</p>
         <p>Region :  {item.titlea}</p>
         <p>Field :  {item.title}</p>
