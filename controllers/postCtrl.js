@@ -153,7 +153,25 @@ const postCtrl = {
 
   updatePost: async (req, res) => {
     try {
-      const { content, contentsub, community, images } = req.body;
+      const { content,
+        contentsub,
+        community,
+        title,
+        titlea,
+        titleb,
+        titlec,
+        titled,
+        titlee,
+        titlef,
+        titleg,
+        titleh,
+        titlei,
+        titlej,
+        titlek,
+        titlel,
+        titlem,
+        images,
+        images2 } = req.body;
 
       const post = await Posts.findOneAndUpdate(
         { _id: req.params.id },
@@ -161,12 +179,22 @@ const postCtrl = {
           content,
           contentsub,
           community,
-          trend1,
-          trend2,
-          trend3,
-          title, //added part
+          title,
+          titlea,
+          titleb,
+          titlec,
+          titled,
+          titlee,
+          titlef,
+          titleg,
+          titleh,
+          titlei,
+          titlej,
+          titlek,
+          titlel,
+          titlem,
           images,
-          images2, //added part
+          images2
         }
       )
         .populate("user likes likelefts likerights", "avatar username fullname")
@@ -185,15 +213,13 @@ const postCtrl = {
           content,
           contentsub,
           community,
-          trend1,
-          trend2,
-          trend3,
           title, //added part
           images,
           images2, //added part
         },
       });
     } catch (err) {
+      console.log(err)
       return res.status(500).json({ msg: err.message });
     }
   },

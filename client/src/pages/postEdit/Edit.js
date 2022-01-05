@@ -159,95 +159,36 @@ const Edit = ({history, location, match}) => {
         setStream(false);
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        // if (images.length === 0) {
-        //   return dispatch({
-        //     type: GLOBALTYPES.ALERT,
-        //     payload: { error: "Add image(s)." },
-        //   });
-        // }
 
-        if (status.onEdit) {
-            dispatch(updatePost({
-                content,
-                contentsub,
-                community,
-                images,
-                images2,
-                trend1,
-                trend2,
-                trend3,
-                title,
-                titlea,
-                titleb,
-                titlec,
-                titled,
-                titlee,
-                titlef,
-                titleg,
-                titleh,
-                titlei,
-                titlej,
-                titlek,
-                titlel,
-                titlem,
-                auth,
-                status
-            }));
-        } else {
-            dispatch(createPost({
-                content,
-                contentsub,
-                community,
-                images,
-                images2,
-                trend1,
-                trend2,
-                trend3,
-                title,
-                titlea,
-                titleb,
-                titlec,
-                titled,
-                titlee,
-                titlef,
-                titleg,
-                titleh,
-                titlei,
-                titlej,
-                titlek,
-                titlel,
-                titlem,
-                auth,
-                socket
-            }));
-        }
+        dispatch(updatePost({
+            content,
+            contentsub,
+            community,
+            images,
+            images2,
+            trend1,
+            trend2,
+            trend3,
+            title,
+            titlea,
+            titleb,
+            titlec,
+            titled,
+            titlee,
+            titlef,
+            titleg,
+            titleh,
+            titlei,
+            titlej,
+            titlek,
+            titlel,
+            titlem,
+            auth,
+            status : patientUserData
+        })).then(()=> window.location.href ='/');
 
-        setContent('');
-        setContentsub('');
-        setCommunity('');
-        settitle('');
-
-        settitlea('');
-        settitleb('');
-        settitlec('');
-        settitled('');
-        settitlee('');
-        settitlef('');
-        settitleg('');
-        settitleh('');
-        settitlei('');
-        settitlej('');
-        settitlek('');
-        settitlel('');
-        settitlem('');
-
-        setImages([]);
-        setImages2([]);
-        settrend1('');
-        settrend2('');
-        settrend3('');
         if (tracks) {
             tracks.stop();
         }

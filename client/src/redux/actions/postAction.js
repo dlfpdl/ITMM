@@ -249,6 +249,7 @@ export const updatePost = ({
     imgNewUrl2.length === 0 && //added part
     imgOldUrl2.length === status.images2.length //added part
   ) {
+    console.log("Edit False")
     return;
   }
   try {
