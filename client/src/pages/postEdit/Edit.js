@@ -9,10 +9,11 @@ import EditStatusModal from "../../components/EditStatusModal";
 import {GLOBALTYPES} from "../../redux/actions/globalTypes";
 import {BiImageAdd, BiMinus} from "react-icons/bi";
 import {imageShowModal, videoShowModal} from "../../utils/mediaShowModal";
+import {convertURLtoFile} from "../../utils/convertUrlImgToFile";
+import {postDataAPI} from "../../utils/fetchData";
 
 const Edit = ({history, location, match}) => {
     const patientUserData = location.state.item;
-    console.log(patientUserData)
     const {auth, theme, status, socket} = useSelector(state => state);
     const dispatch = useDispatch();
 
@@ -61,7 +62,8 @@ const Edit = ({history, location, match}) => {
     const [trend3, settrend3] = useState(random2);
 
     const handleChangeImages = e => {
-        const files = [...e.target.files];
+        console.log(e)
+        const files = [e];
         let err = '';
         let newImages = [];
 
@@ -80,7 +82,7 @@ const Edit = ({history, location, match}) => {
         setImages([...images, ...newImages]);
     };
     const handleChangeImages2 = e => {
-        const files = [...e.target.files];
+        const files = [e];
         let err = '';
         let newImages = [];
 
@@ -159,7 +161,7 @@ const Edit = ({history, location, match}) => {
         setStream(false);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         dispatch(updatePost({
@@ -186,16 +188,10 @@ const Edit = ({history, location, match}) => {
             titlel,
             titlem,
             auth,
-            status : patientUserData
-        })).then(()=> {
-            dispatch(
-                createPost({
-                    patientUserData,
-                    auth,
-                    socket
-                })
-            );
-        });
+            status: patientUserData
+        }))
+
+        postDataAPI('/posts',patientUserData,auth.token)
 
         if (tracks) {
             tracks.stop();
@@ -305,6 +301,7 @@ const Edit = ({history, location, match}) => {
                     value={titleb}
                 ></input>
             </div>
+
             <h1>Vital Check</h1>
             <div className='patient-block'>
                 <h3>Blood Pressure (혈압)</h3>

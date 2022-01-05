@@ -71,6 +71,7 @@ const StatusModal = () => {
 		}
 		setImages([...images, ...newImages]);
 	};
+
 	const handleChangeImages2 = e => {
 		const files = [...e.target.files];
 		let err = '';
