@@ -1,11 +1,16 @@
 const router = require("express").Router();
 const auth = require("../middleware/auth");
 const bostCtrl = require("../controllers/bostCtrl");
+const retreatmentCtrl = require("../controllers/retreatmentCtrl");
 
 router
   .route("/bosts")
   .post(auth, bostCtrl.createBost)
   .get(auth, bostCtrl.getBosts);
+
+router
+    .route("/retreatment")
+    .get(auth, retreatmentCtrl.getTreatmentUser)
 
 router
   .route("/bost/:id")

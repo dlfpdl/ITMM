@@ -13,6 +13,7 @@ import BostCard from "../BostCard";
 import LoadMoreBtn from "../LoadMoreBtn";
 import { getDataAPI } from "../../utils/fetchData";
 import { BOST_TYPES } from "../../redux/actions/bostAction";
+import ReTreatment from "./ReTreatment";
 
 const RightSideBar = () => {
   const { auth, suggestions } = useSelector((state) => state);
@@ -79,7 +80,9 @@ const RightSideBar = () => {
             ))}
           </div>
         )}
+        <ReTreatment />
       </div>
+
     </div>
   );
 };

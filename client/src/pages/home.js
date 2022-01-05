@@ -154,6 +154,7 @@ const Home = () => {
 
 			<div className=''>
 				<RightSideBar />
+
 				<div className='community_finder'>
 					<br />
 					{all.loading && homePosts.posts.loading ? (

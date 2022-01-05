@@ -259,3 +259,12 @@ textarea.hashtag-textarea {
     text-align: center;
   }
 }
+
+.editStatus_Modal {
+  margin: 20px;
+  height: calc(100vh - 160px);
+
+}
+.editStatus_Modal > .status_body{
+  height: calc(100vh - 270px);
+}

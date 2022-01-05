@@ -13,6 +13,7 @@ const Saved = ({ auth, dispatch }) => {
 
   useEffect(() => {
     setLoad(true);
+
     getDataAPI(`getSavePosts`, auth.token)
       .then((res) => {
         setSavePosts(res.data.savePosts);
@@ -49,6 +50,7 @@ const Saved = ({ auth, dispatch }) => {
   return (
     <div>
       <PostThumb posts={savePosts} result={result} />
+
       <div className="margintop100px">
         {load && (
           <img src={LoadIcon} alt="Loading..." className="d-block mx-auto" />

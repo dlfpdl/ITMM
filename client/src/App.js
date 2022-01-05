@@ -30,6 +30,7 @@ import SocketClient from "./SocketClient";
 
 import Test from "./pages/test";
 import Searchpage from "./pages/Searchpage";
+import Edit from "./pages/postEdit/Edit";
 
 function App() {
   const { auth, status, status1, status2, modal, userType } = useSelector(
@@ -156,6 +157,7 @@ function App() {
               <div className="wrap_page">
                 <PrivateRouter exact path="/:page" component={PageRender} />
                 <PrivateRouter exact path="/:page/:id" component={PageRender} />
+                <PrivateRouter exact path="/postEdit/:id" component={Edit} />
                 <PrivateRouter exact path="/test" component={Test} />
                 <PrivateRouter exact path="/test" component={Test} />
               </div>
