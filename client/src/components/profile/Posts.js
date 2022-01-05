@@ -14,7 +14,14 @@ const Posts = ({ auth, profile, dispatch, id }) => {
   useEffect(() => {
     profile.posts.forEach((data) => {
       if (data._id === id) {
-        setPosts(data.posts);
+
+        const docData = data.posts
+        const res = docData.filter((elem1, idx1)=>{
+          return docData.findIndex((elem2, idx2)=>{
+            return elem1.content === elem2.content
+          }) === idx1
+        })
+        setPosts(res);
         setResult(data.result);
         setPage(data.page);
       }
