@@ -39,18 +39,18 @@ const Edit = ({history, location, match}) => {
     const [titleb, settitleb] = useState(patientUserData.titleb);
     const [titlec, settitlec] = useState(patientUserData.titlec);
     const [titled, settitled] = useState(patientUserData.titled);
-    const [titlee, settitlee] = useState('');
-    const [titlef, settitlef] = useState('');
-    const [titleg, settitleg] = useState('');
-    const [titleh, settitleh] = useState('');
-    const [titlei, settitlei] = useState('');
-    const [titlej, settitlej] = useState('');
-    const [titlek, settitlek] = useState('');
-    const [titlel, settitlel] = useState('');
-    const [titlem, settitlem] = useState('');
+    const [titlee, settitlee] = useState(patientUserData.titlee);
+    const [titlef, settitlef] = useState(patientUserData.titlef);
+    const [titleg, settitleg] = useState(patientUserData.titleg);
+    const [titleh, settitleh] = useState(patientUserData.titleh);
+    const [titlei, settitlei] = useState(patientUserData.titlei);
+    const [titlej, settitlej] = useState(patientUserData.titlej);
+    const [titlek, settitlek] = useState(patientUserData.titlek);
+    const [titlel, settitlel] = useState(patientUserData.titlel);
+    const [titlem, settitlem] = useState(patientUserData.titlem);
 
-    const [images, setImages] = useState([]);
-    const [images2, setImages2] = useState([]);
+    const [images, setImages] = useState(patientUserData.images);
+    const [images2, setImages2] = useState(patientUserData.images2);
     const [stream, setStream] = useState(false);
     const videoRef = useRef();
     const refCanvas = useRef();
@@ -288,13 +288,7 @@ const Edit = ({history, location, match}) => {
     return (
     <form onSubmit={handleSubmit} className={'editStatus_Modal'}>
         <div className='status_header'>
-            <a className='m-0 default'>Feel Out The Form</a>
-            <span
-                onClick={() => dispatch({
-                    type: GLOBALTYPES.STATUS, payload: false
-                })}>
-						<BiMinus/>
-					</span>
+            <a className='m-0 default'>재진 : {patientUserData.content} / {patientUserData._id}</a>
         </div>
         <div className='status_body'>
             <div className='d-none'>
